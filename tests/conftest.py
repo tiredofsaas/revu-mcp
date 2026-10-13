@@ -117,5 +117,7 @@ def sample_bax(scratch_dir: Path) -> Path:
 
 
 # Tests that read the real Revu 21 installation (registry, stamps, profiles, tool sets) skip where it is absent.
-REVU_INSTALLED = Path(r"C:\Program Files\Bluebeam Software\Bluebeam Revu\Revu\Revu.exe").exists()
+REVU_INSTALLED = (
+    Path(os.environ.get("ProgramFiles", "C:/Program Files")) / "Bluebeam Software" / "Bluebeam Revu" / "21" / "Revu" / "Revu.exe"
+).exists()
 requires_revu = pytest.mark.skipif(not REVU_INSTALLED, reason="Bluebeam Revu 21 is not installed on this machine")
