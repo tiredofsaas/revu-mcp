@@ -1,6 +1,6 @@
-# revu-mcp
+# revu-mcp: Bluebeam Revu MCP server
 
-A Model Context Protocol (MCP) server that lets an AI agent work with PDF drawings and markups on a Windows machine that has Bluebeam Revu 21 installed. 28 tools over stdio, Python 3.12.
+A Model Context Protocol (MCP) server for Bluebeam Revu 21 on Windows. It lets Claude Desktop, Claude Code, Codex and other MCP hosts read, mark up, stamp, flatten, split, combine, number and secure PDF drawings using the Bluebeam Script engine where your licence allows it, and open-source PDF libraries where it does not. 28 tools over stdio, Python 3.12. Built for engineering and construction work: drawing sets, submittals, field markups, Bates numbering, tool sets and profiles.
 
 Unofficial. Not affiliated with or endorsed by Bluebeam, Inc. See `TRADEMARKS.md`.
 
@@ -23,6 +23,29 @@ Markups, forms, stamps, output: `bb_markup_list`, `bb_markup_add`, `bb_markup_up
 Environment: `bb_env_status`, `bb_profile_inspect`, `bb_toolset_inspect`, `bb_toolset_create_export`, `bb_stamp_library_inspect`, `bb_script_generate_and_run`.
 
 Every response is a JSON envelope with `status`, `data`, `error` (code, message, details), the generated script text and the runner receipt.
+
+## Tested environment
+
+Everything below was exercised on one workstation before release. If your setup differs, you are the first to test it there, and a bug report is welcome.
+
+| Item | Tested with |
+|---|---|
+| Operating system | Windows 11 Pro, build 10.0.26300, x64 |
+| Python | 3.12.10, per-user install |
+| Bluebeam Revu | 21.11.0.23287, **Core** licence (subscription) |
+| Script engine | present, returns -4 on Core; the native fallback path is what ran |
+| mcp SDK | 1.27 and 1.30 (2.x is excluded by the dependency pin) |
+| pypdf / reportlab / Pillow / defusedxml | 6.11 and 6.20 / 4.5 / 12.2 and 12.3 / 0.7 |
+| MCP hosts | Claude Desktop, Claude Code, Codex CLI, Antigravity, all via stdio |
+| Test suite | 221 tests, all passing, in the editable install and in a clean venv |
+| Live check | all 28 tools run against a real one-page drawing PDF and a four-page combined set; outputs opened and inspected in Revu |
+
+Not tested, and we would like help with:
+
+- Revu **Complete** (the script-engine path has never executed a script here; every tool generates the script and the runner is invoked, but it exits -4 before running it).
+- Revu 20 or earlier, Revu 21 builds other than 21.11, and Windows 10.
+- Non-English Revu installs (stamp and profile paths are read from the registry, so they should resolve, but nobody has checked).
+- Encrypted drawings with owner passwords other than the ones the suite generates.
 
 ## Install
 
