@@ -87,6 +87,8 @@ Claude Code: `claude mcp add -s user revu -- C:\Path\To\Python312\python.exe -m 
 
 `src/bluebeam_mcp/` server, security, script builder and tools. `tests/` 221 tests, fixtures generated on the fly under `tests/tmp/` and removed afterwards. `docs/` notes on the Bluebeam Script command surface and the `.btx`, `.bpx` and `.bax` file formats as observed from public documentation and ordinary files.
 
-## Contributing and support
+## Help wanted
 
-Issues and pull requests are welcome. There is no support commitment. Please do not open issues that include your own drawings or client documents.
+This came out of one shop's daily work and it does what that shop needs. It would be better with more hands: people with a Revu Complete licence who can exercise the script-engine path, people on other Revu versions, people who want tools this doesn't have yet.
+
+Open an issue, pick one up, or send a small pull request that says what problem it solves. There is no support commitment. Please keep your own drawings and client documents out of issues.
