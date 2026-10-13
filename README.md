@@ -1,5 +1,9 @@
 # revu-mcp: Bluebeam Revu MCP server
 
+[![tests](https://github.com/tiredofsaas/revu-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/tiredofsaas/revu-mcp/actions/workflows/tests.yml) [![PyPI](https://img.shields.io/pypi/v/revu-mcp)](https://pypi.org/project/revu-mcp/) [![licence](https://img.shields.io/badge/licence-PolyForm%20Noncommercial%201.0.0-blue)](LICENSE)
+
+<!-- mcp-name: io.github.tiredofsaas/revu-mcp -->
+
 A Model Context Protocol (MCP) server for Bluebeam Revu 21 on Windows. It lets Claude Desktop, Claude Code, Codex and other MCP hosts read, mark up, stamp, flatten, split, combine, number and secure PDF drawings using the Bluebeam Script engine where your licence allows it, and open-source PDF libraries where it does not. 28 tools over stdio, Python 3.12. Built for engineering and construction work: drawing sets, submittals, field markups, Bates numbering, tool sets and profiles.
 
 Unofficial. Not affiliated with or endorsed by Bluebeam, Inc. See `TRADEMARKS.md`.
@@ -52,7 +56,13 @@ Not tested, and we would like help with:
 Requirements: Windows, Python 3.12 or newer, Bluebeam Revu 21 installed (the server also works on a machine without Revu, fallback only).
 
 ```
-git clone <this repository>
+python -m pip install revu-mcp
+```
+
+or from source:
+
+```
+git clone https://github.com/tiredofsaas/revu-mcp
 cd revu-mcp
 python -m pip install .
 ```

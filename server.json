@@ -1,0 +1,52 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.tiredofsaas/revu-mcp",
+  "title": "Revu MCP",
+  "description": "PDF drawings and markups with Bluebeam Revu 21 on Windows: mark up, stamp, flatten, split, secure.",
+  "repository": {
+    "url": "https://github.com/tiredofsaas/revu-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "websiteUrl": "https://github.com/tiredofsaas/revu-mcp",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "revu-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "BLUEBEAM_MCP_FORBIDDEN_ROOTS",
+          "description": "Semicolon-separated directories the server must never read, write or delete.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "BLUEBEAM_MCP_READ_ROOTS",
+          "description": "Optional semicolon-separated allowlist of readable roots.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "BLUEBEAM_MCP_WRITE_ROOTS",
+          "description": "Optional semicolon-separated allowlist of writable roots.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "BLUEBEAM_MCP_SCRATCH_DIR",
+          "description": "Directory for generated scripts and temporary files.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
