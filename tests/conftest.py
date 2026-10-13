@@ -13,6 +13,8 @@ from __future__ import annotations
 
 # Site-specific protected roots are environment-driven; tests use a neutral placeholder vault path.
 import os as _os
+from pathlib import Path as _Path
+_Path(__file__).resolve().parent.joinpath("tmp").mkdir(parents=True, exist_ok=True)  # engine picks tests/tmp as scratch only if it exists at import
 _os.environ.setdefault("BLUEBEAM_MCP_FORBIDDEN_ROOTS", r"E:\ProtectedVault;C:\Program Files\SOLIDWORKS Corp")
 
 import os
@@ -112,3 +114,8 @@ def sample_bax(scratch_dir: Path) -> Path:
     """Provide a valid Bluebeam Annotations XML export (.bax) fixture."""
     bax_path = FIXTURES_DIR / "sample_markups.bax"
     return create_sample_bax(bax_path)
+
+
+# Tests that read the real Revu 21 installation (registry, stamps, profiles, tool sets) skip where it is absent.
+REVU_INSTALLED = Path(r"C:\Program Files\Bluebeam Software\Bluebeam Revu\Revu\Revu.exe").exists()
+requires_revu = pytest.mark.skipif(not REVU_INSTALLED, reason="Bluebeam Revu 21 is not installed on this machine")

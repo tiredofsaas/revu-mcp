@@ -25,6 +25,8 @@ from mcp.server.fastmcp import FastMCP
 import pypdf
 import pytest
 
+from tests.conftest import requires_revu
+
 from bluebeam_mcp.script_builder import (
     ALL_FLATTEN_FLAGS,
     ALL_SECURITY_FLAGS,
@@ -584,6 +586,7 @@ def test_tier4_live_markup_flatten_and_unflatten(annotated_pdf: Path) -> None:
     assert list_unflat["data"]["total_markups"] == 2
 
 
+@requires_revu
 def test_tier4_live_stamp_installed_approved(sample_pdf: Path) -> None:
     """T4: Live stamp placement using real Bluebeam Approved.pdf stamp."""
     out_pdf = str(SCRATCH_DIR / f"live_stamp_app_{uuid.uuid4().hex}.pdf")

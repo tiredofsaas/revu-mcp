@@ -21,6 +21,8 @@ import zlib
 from mcp.server.fastmcp import FastMCP
 import pytest
 
+from tests.conftest import requires_revu
+
 from bluebeam_mcp.tools.environment_tools import (
     ALL_PBMNGR_PLUGIN_FLAGS,
     PBMNGR_PLUGIN_FLAGS,
@@ -413,6 +415,7 @@ class TestTier3FaultInjection:
 # ============================================================================
 
 
+@requires_revu
 class TestTier4LiveIntegration:
     """Tier 4: Live integration tests with real installed Bluebeam Revu 21 assets."""
 

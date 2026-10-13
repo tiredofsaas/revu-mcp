@@ -19,6 +19,8 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+
+from tests.conftest import requires_revu
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
@@ -118,6 +120,7 @@ def test_mcp_stdio_wire_handshake_and_tools_list() -> None:
     asyncio.run(_runner())
 
 
+@requires_revu
 def test_mcp_stdio_wire_live_tool_calls() -> None:
     """Execute live call_tool requests over the stdio wire for the 7 specified tools.
 
@@ -232,6 +235,7 @@ def test_mcp_stdio_wire_live_tool_calls() -> None:
                     pass
 
 
+@requires_revu
 def test_mcp_stdio_wire_adversarial_security_rejection() -> None:
     """Send live adversarial call_tool requests over stdio wire and verify SECURITY_VIOLATION.
 
@@ -294,6 +298,7 @@ def test_mcp_stdio_wire_adversarial_security_rejection() -> None:
     asyncio.run(_runner())
 
 
+@requires_revu
 def test_concurrency_stress_and_zero_zombies_or_temp_leaks() -> None:
     """Execute 8 concurrent tool calls using ThreadPoolExecutor.
 
@@ -369,16 +374,19 @@ def test_mcp_wire_stdio_protocol_handshake() -> None:
     test_mcp_stdio_wire_handshake_and_tools_list()
 
 
+@requires_revu
 def test_mcp_wire_tool_call_round_trip() -> None:
     """T4-09: Alias for test_mcp_stdio_wire_live_tool_calls satisfying matrix specification."""
     test_mcp_stdio_wire_live_tool_calls()
 
 
+@requires_revu
 def test_mcp_wire_adversarial_rejection() -> None:
     """T4-10: Alias for test_mcp_stdio_wire_adversarial_security_rejection satisfying matrix specification."""
     test_mcp_stdio_wire_adversarial_security_rejection()
 
 
+@requires_revu
 def test_concurrency_and_zero_zombies() -> None:
     """T4-11: Alias for test_concurrency_stress_and_zero_zombies_or_temp_leaks satisfying matrix specification."""
     test_concurrency_stress_and_zero_zombies_or_temp_leaks()
